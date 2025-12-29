@@ -20,7 +20,7 @@ const seed = async () => {
       year: 2023,
       basePrice: 74999,
       description: 'High-performance sports sedan with iconic styling.',
-      modelUrl: '/models/cars/bmw-m3.glb',
+      modelUrl: '/models/cars/placeholder-car.gltf',
     },
     {
       name: 'Tesla Model 3',
@@ -28,7 +28,7 @@ const seed = async () => {
       year: 2024,
       basePrice: 38999,
       description: 'All-electric sedan with cutting-edge tech and performance.',
-      modelUrl: '/models/cars/tesla-model-3.glb',
+      modelUrl: '/models/cars/placeholder-car.gltf',
     },
   ];
 
