@@ -85,7 +85,7 @@ car-mods-3d/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/joemunene-by/car-mods-3D.git
    cd car-mods-3d
    ```
 
