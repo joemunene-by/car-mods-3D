@@ -1,0 +1,134 @@
+.price-display {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.price-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.price-base {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-base .price-label {
+  font-weight: 500;
+}
+
+.price-base .price-value {
+  font-size: 1.1rem;
+}
+
+.customizations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 0.25rem 0;
+}
+
+.item-label {
+  opacity: 0.8;
+}
+
+.item-value {
+  color: #646cff;
+}
+
+.price-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
+}
+
+.price-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.total-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.total-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #646cff;
+}
+
+.price-addons {
+  text-align: right;
+}
+
+.addons-label {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.price-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.save-btn,
+.load-btn {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-btn:hover {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.load-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.price-reset {
+  margin-top: 0.5rem;
+}
+
+.reset-full-btn {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: 1px dashed rgba(255, 100, 100, 0.3);
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 150, 150, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-full-btn:hover {
+  background: rgba(255, 100, 100, 0.1);
+  border-style: solid;
+}

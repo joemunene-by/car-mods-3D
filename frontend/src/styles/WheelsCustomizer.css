@@ -1,0 +1,267 @@
+.wheels-customizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wheels-customizer .customizer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wheels-customizer h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wheel-designs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.wheel-design-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wheel-design-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.wheel-design-card.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.wheel-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.wheel-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.wheel-price {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.size-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.size-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 60px;
+}
+
+.size-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.size-btn.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.size-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.size-label {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.finish-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.finish-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.finish-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.finish-card.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.finish-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finish-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.finish-desc {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.tire-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tire-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tire-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tire-btn.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.tire-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.tire-desc {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.tire-price {
+  font-size: 0.85rem;
+  color: #646cff;
+}
+
+.specs-toggle {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.specs-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.wheel-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spec-label {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.spec-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.price-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.price-row.total {
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .wheel-designs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .finish-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

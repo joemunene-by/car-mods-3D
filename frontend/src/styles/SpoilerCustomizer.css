@@ -1,0 +1,270 @@
+.spoiler-customizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.spoiler-customizer .customizer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.spoiler-customizer h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.spoiler-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.spoiler-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.spoiler-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.spoiler-card.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.spoiler-preview {
+  width: 100%;
+  height: 60px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spoiler-shape {
+  width: 80%;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 2px;
+}
+
+.spoiler-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spoiler-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.spoiler-desc {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.spoiler-price {
+  font-size: 0.85rem;
+  color: #646cff;
+  font-weight: 500;
+}
+
+.no-spoiler-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.no-spoiler-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-style: solid;
+}
+
+.material-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.material-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.material-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.material-btn.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.material-preview {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.material-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.material-multiplier {
+  font-size: 0.65rem;
+  color: #646cff;
+}
+
+.position-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.position-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.position-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.position-btn.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.position-name {
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.position-desc {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.angle-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.angle-slider {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  outline: none;
+}
+
+.angle-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #646cff;
+  cursor: pointer;
+}
+
+.angle-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #646cff;
+  cursor: pointer;
+  border: none;
+}
+
+.angle-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.angle-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #646cff;
+}
+
+.angle-label {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.price-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.price-summary .price-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #646cff;
+}
+
+@media (max-width: 768px) {
+  .spoiler-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .material-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .position-options {
+    flex-direction: column;
+  }
+}
