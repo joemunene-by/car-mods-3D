@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { HttpError } from '../utils/httpErrors';
 
 interface ErrorResponse {
   status: string;
@@ -7,22 +8,22 @@ interface ErrorResponse {
 }
 
 export const errorHandler = (
-  err: Error,
-  req: Request,
+  err: unknown,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   console.error('Error:', err);
 
-  const statusCode = res.statusCode !== 200 ? res.statusCode : 500;
-  
+  const statusCode = err instanceof HttpError ? err.statusCode : 500;
+
   const response: ErrorResponse = {
     status: 'error',
-    message: err.message || 'Internal Server Error',
+    message: err instanceof Error ? err.message : 'Internal Server Error',
   };
 
   if (process.env.NODE_ENV === 'development') {
-    response.stack = err.stack;
+    response.stack = err instanceof Error ? err.stack : undefined;
   }
 
   res.status(statusCode).json(response);

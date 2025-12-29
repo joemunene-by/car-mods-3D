@@ -19,6 +19,17 @@
     "declarationMap": true,
     "types": ["node"]
   },
-  "include": ["src/**/*", "config/**/*", "routes/**/*", "controllers/**/*", "models/**/*", "middleware/**/*", "index.ts"],
+  "include": [
+    "src/**/*",
+    "config/**/*",
+    "routes/**/*",
+    "controllers/**/*",
+    "models/**/*",
+    "middleware/**/*",
+    "utils/**/*",
+    "migrations/**/*",
+    "seeds/**/*",
+    "index.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

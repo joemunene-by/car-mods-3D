@@ -7,7 +7,12 @@
     "dev": "nodemon",
     "build": "tsc",
     "start": "node dist/index.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "typeorm": "typeorm-ts-node-commonjs -d ./config/database.ts",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:revert": "npm run typeorm -- migration:revert",
+    "migration:show": "npm run typeorm -- migration:show",
+    "seed": "ts-node seeds/seed.ts"
   },
   "keywords": [
     "express",
