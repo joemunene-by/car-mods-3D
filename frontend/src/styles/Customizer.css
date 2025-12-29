@@ -1,0 +1,750 @@
+.customizer-page {
+  display: flex;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.customizer-page .viewer-container {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.customizer-page .customization-panel {
+  width: 400px;
+  min-width: 400px;
+  background: rgba(20, 20, 20, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.customization-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.customization-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.customization-header .car-name {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.customization-section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.customization-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.customization-section-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.customization-section-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.customization-section-header .icon {
+  font-size: 1.2rem;
+}
+
+.customization-section-header .expand-icon {
+  transition: transform 0.3s;
+}
+
+.customization-section-header.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+.customization-section-content {
+  padding: 0 1.25rem 1.25rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+}
+
+.customization-section.expanded .customization-section-content {
+  max-height: 1000px;
+}
+
+.section-row {
+  margin-bottom: 1.25rem;
+}
+
+.section-row:last-child {
+  margin-bottom: 0;
+}
+
+.section-label {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.color-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.color-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.color-preview-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.color-preview-swatch:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.color-hex-input {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-family: monospace;
+}
+
+.color-hex-input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.color-swatches {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.4rem;
+}
+
+.color-swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+.color-swatch.selected {
+  border-color: white;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.5);
+}
+
+.finish-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.finish-option {
+  flex: 1;
+  min-width: 80px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.finish-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.finish-option.selected {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+  color: #a5aaff;
+}
+
+.zone-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.zone-option {
+  flex: 1;
+  min-width: 70px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.zone-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.zone-option.selected {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+  color: white;
+}
+
+.wheel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.wheel-option {
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.wheel-option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.wheel-option.selected {
+  border-color: #646cff;
+  background: rgba(100, 108, 255, 0.15);
+}
+
+.wheel-option .wheel-preview {
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #444 0%, #888 50%, #444 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.wheel-option.selected .wheel-preview {
+  background: linear-gradient(135deg, #4a4aff 0%, #8888ff 50%, #4a4aff 100%);
+}
+
+.wheel-option .wheel-name {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.wheel-option.selected .wheel-name {
+  color: #a5aaff;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.size-button {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.size-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.size-button.selected {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+  color: #a5aaff;
+}
+
+.body-kit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.body-kit-option {
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.body-kit-option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.body-kit-option.selected {
+  border-color: #646cff;
+  background: rgba(100, 108, 255, 0.15);
+}
+
+.body-kit-option .kit-preview {
+  aspect-ratio: 16/9;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.body-kit-option .kit-info {
+  padding: 0.75rem;
+}
+
+.body-kit-option .kit-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.body-kit-option .kit-price {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.body-kit-pieces {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.body-kit-piece {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.body-kit-piece:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.body-kit-piece input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #646cff;
+}
+
+.body-kit-piece label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.spoiler-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.spoiler-option {
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.spoiler-option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.spoiler-option.selected {
+  border-color: #646cff;
+  background: rgba(100, 108, 255, 0.15);
+}
+
+.spoiler-option .spoiler-icon {
+  font-size: 1.5rem;
+}
+
+.spoiler-option .spoiler-name {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.spoiler-option.selected .spoiler-name {
+  color: #a5aaff;
+}
+
+.slider-control {
+  width: 100%;
+}
+
+.slider-control input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  appearance: none;
+  cursor: pointer;
+}
+
+.slider-control input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #646cff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.slider-control input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.slider-control .slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-value {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #a5aaff;
+  margin-top: 0.25rem;
+}
+
+.decal-library {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.decal-option {
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.decal-option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.decal-option.selected {
+  border-color: #646cff;
+  background: rgba(100, 108, 255, 0.15);
+}
+
+.placement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.placement-option {
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.placement-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.placement-option.selected {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+  color: white;
+}
+
+.applied-decals {
+  margin-top: 1rem;
+}
+
+.applied-decal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.applied-decal .decal-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: rgba(100, 108, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.applied-decal .decal-info {
+  flex: 1;
+}
+
+.applied-decal .decal-name {
+  font-size: 0.85rem;
+  color: white;
+}
+
+.applied-decal .decal-placement {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.applied-decal .remove-btn {
+  padding: 0.4rem;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 100, 100, 0.2);
+  color: #ff8888;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applied-decal .remove-btn:hover {
+  background: rgba(255, 100, 100, 0.4);
+}
+
+.price-summary {
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.price-row.total {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.price-row .label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.price-row .value {
+  color: white;
+}
+
+.price-row.total .value {
+  color: #a5aaff;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.action-buttons button {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-buttons .primary-btn {
+  background: #646cff;
+  color: white;
+}
+
+.action-buttons .primary-btn:hover {
+  background: #535bf2;
+}
+
+.action-buttons .secondary-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.action-buttons .secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.history-controls {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-btn {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.history-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.history-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reset-section-btn {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-section-btn:hover {
+  background: rgba(255, 100, 100, 0.15);
+  border-color: rgba(255, 100, 100, 0.3);
+  color: #ff8888;
+}
+
+.compatibility-warning {
+  padding: 0.75rem;
+  margin-top: 0.75rem;
+  background: rgba(255, 150, 50, 0.15);
+  border: 1px solid rgba(255, 150, 50, 0.3);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #ffb060;
+}
+
+@media (max-width: 1024px) {
+  .customizer-page {
+    flex-direction: column;
+  }
+
+  .customizer-page .viewer-container {
+    height: 50vh;
+  }
+
+  .customizer-page .customization-panel {
+    width: 100%;
+    min-width: 0;
+    height: 50vh;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .color-swatches {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .wheel-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .decal-library {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

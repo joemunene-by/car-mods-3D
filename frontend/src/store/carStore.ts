@@ -25,3 +25,5 @@ export const useCarStore = create<CarState>((set) => ({
       modifications: state.modifications.filter((m) => m !== modification),
     })),
 }));
+
+export type { CarState };

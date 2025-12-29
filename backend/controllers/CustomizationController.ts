@@ -30,6 +30,34 @@ export const getCustomizationsForCar = async (
   }
 };
 
+export const getCustomizationsByCategory = async (
+  req: Request<{ carId: string; category: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { carId, category } = req.params;
+
+    if (!Object.values(CustomizationCategory).includes(category as CustomizationCategory)) {
+      throw new NotFoundError('Invalid category');
+    }
+
+    const carRepo = AppDataSource.getRepository(Car);
+    const car = await carRepo.findOne({ where: { id: carId } });
+    if (!car) throw new NotFoundError('Car not found');
+
+    const customizationRepo = AppDataSource.getRepository(CustomizationOption);
+    const options = await customizationRepo.find({
+      where: { carId, category: category as CustomizationCategory },
+      order: { createdAt: 'DESC' },
+    });
+
+    sendSuccess(res, options);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getCustomizationById = async (
   req: Request<{ id: string }>,
   res: Response,
@@ -61,6 +89,12 @@ type CreateCustomizationBody = {
   colorHex?: string | null;
   modelUrl?: string | null;
   imageUrl?: string | null;
+  specs?: Record<string, unknown> | null;
+  compatibility?: Record<string, unknown> | null;
+  positionConfig?: Record<string, unknown> | null;
+  thumbnailUrl?: string | null;
+  isAvailable?: boolean;
+  isPremium?: boolean;
 };
 
 export const createCustomization = async (
@@ -84,6 +118,12 @@ export const createCustomization = async (
       colorHex: req.body.colorHex ?? null,
       modelUrl: req.body.modelUrl ?? null,
       imageUrl: req.body.imageUrl ?? null,
+      specs: req.body.specs ?? null,
+      compatibility: req.body.compatibility ?? null,
+      positionConfig: req.body.positionConfig ?? null,
+      thumbnailUrl: req.body.thumbnailUrl ?? null,
+      isAvailable: req.body.isAvailable ?? true,
+      isPremium: req.body.isPremium ?? false,
     });
 
     const saved = await customizationRepo.save(option);
@@ -119,6 +159,12 @@ export const updateCustomization = async (
     if ('colorHex' in req.body) patch.colorHex = req.body.colorHex ?? null;
     if ('modelUrl' in req.body) patch.modelUrl = req.body.modelUrl ?? null;
     if ('imageUrl' in req.body) patch.imageUrl = req.body.imageUrl ?? null;
+    if ('specs' in req.body) patch.specs = req.body.specs ?? null;
+    if ('compatibility' in req.body) patch.compatibility = req.body.compatibility ?? null;
+    if ('positionConfig' in req.body) patch.positionConfig = req.body.positionConfig ?? null;
+    if ('thumbnailUrl' in req.body) patch.thumbnailUrl = req.body.thumbnailUrl ?? null;
+    if ('isAvailable' in req.body) patch.isAvailable = req.body.isAvailable;
+    if ('isPremium' in req.body) patch.isPremium = req.body.isPremium;
 
     customizationRepo.merge(option, patch);
 
