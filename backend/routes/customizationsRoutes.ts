@@ -4,6 +4,8 @@ import {
   createCustomization,
   deleteCustomization,
   getCustomizationById,
+  getCustomizationsByCategory,
+  getCustomizationsForCar,
   updateCustomization,
 } from '../controllers/CustomizationController';
 import { CustomizationCategory } from '../models/enums';
@@ -11,6 +13,23 @@ import { requireAdmin } from '../middleware/auth';
 import { validateRequest } from '../middleware/validateRequest';
 
 const router = Router();
+
+router.get(
+  '/car/:carId',
+  [param('carId').isUUID().withMessage('carId must be a valid UUID')],
+  validateRequest,
+  getCustomizationsForCar
+);
+
+router.get(
+  '/car/:carId/category/:category',
+  [
+    param('carId').isUUID().withMessage('carId must be a valid UUID'),
+    param('category').isString().notEmpty().withMessage('category is required'),
+  ],
+  validateRequest,
+  getCustomizationsByCategory
+);
 
 router.get(
   '/:id',
@@ -33,6 +52,12 @@ router.post(
     body('colorHex').optional({ nullable: true }).isString(),
     body('modelUrl').optional({ nullable: true }).isString(),
     body('imageUrl').optional({ nullable: true }).isString(),
+    body('specs').optional({ nullable: true }).isObject(),
+    body('compatibility').optional({ nullable: true }).isObject(),
+    body('positionConfig').optional({ nullable: true }).isObject(),
+    body('thumbnailUrl').optional({ nullable: true }).isString(),
+    body('isAvailable').optional().isBoolean(),
+    body('isPremium').optional().isBoolean(),
   ],
   validateRequest,
   createCustomization
@@ -51,6 +76,12 @@ router.put(
     body('colorHex').optional({ nullable: true }).isString(),
     body('modelUrl').optional({ nullable: true }).isString(),
     body('imageUrl').optional({ nullable: true }).isString(),
+    body('specs').optional({ nullable: true }).isObject(),
+    body('compatibility').optional({ nullable: true }).isObject(),
+    body('positionConfig').optional({ nullable: true }).isObject(),
+    body('thumbnailUrl').optional({ nullable: true }).isString(),
+    body('isAvailable').optional().isBoolean(),
+    body('isPremium').optional().isBoolean(),
   ],
   validateRequest,
   updateCustomization
