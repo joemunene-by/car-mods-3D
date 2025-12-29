@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useThreeScene } from '../hooks/useThreeScene';
 import { useCarModel, useCars } from '../hooks/useCarModel';
+import { useCustomizedCarModel } from '../hooks/useCustomizedCarModel';
+import { useCustomizationStore } from '../store/customizationStore';
+import CustomizationPanel from './CustomizationPanel';
 import '../styles/CarViewer.css';
+import type { LoadedModel } from '../three-viewer/ModelLoader';
 
 function CarViewer() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const customizationRef = useRef<HTMLDivElement>(null);
   const { isSceneReady, sceneError, setModel, resetCamera, zoom, rotate } = useThreeScene(containerRef);
 
   const {
@@ -15,6 +20,7 @@ function CarViewer() {
   } = useCars();
 
   const [selectedCarId, setSelectedCarId] = useState<string | null>(null);
+  const [showCustomization, setShowCustomization] = useState(true);
 
   const {
     model,
@@ -24,6 +30,8 @@ function CarViewer() {
     reload: reloadModel,
   } = useCarModel(selectedCarId);
 
+  const { setCarId } = useCustomizationStore();
+
   useEffect(() => {
     if (cars.length > 0 && !selectedCarId) {
       setSelectedCarId(cars[0].id);
@@ -31,14 +39,21 @@ function CarViewer() {
   }, [cars, selectedCarId]);
 
   useEffect(() => {
+    if (selectedCarId) {
+      setCarId(selectedCarId);
+    }
+  }, [selectedCarId, setCarId]);
+
+  useEffect(() => {
     if (!isSceneReady) return;
 
-    setModel(model);
-
     if (model) {
+      setModel(model as unknown as LoadedModel);
       resetCamera();
     }
   }, [isSceneReady, model, resetCamera, setModel]);
+
+  useCustomizedCarModel(model as unknown as THREE.Group, { isSceneReady });
 
   const handleCarChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCarId(e.target.value);
@@ -62,6 +77,14 @@ function CarViewer() {
 
   const handleRotateRight = () => {
     rotate(-0.35, 0);
+  };
+
+  const handleSaveConfiguration = () => {
+    console.log('Saving configuration...');
+  };
+
+  const handleLoadConfiguration = () => {
+    console.log('Loading configuration...');
   };
 
   const showLoading = (!sceneError && !carsError && !modelError) && (carsLoading || modelLoading || !isSceneReady);
@@ -99,32 +122,51 @@ function CarViewer() {
             ))}
           </select>
         </div>
+
+        <button
+          className={`customization-toggle ${showCustomization ? 'active' : ''}`}
+          onClick={() => setShowCustomization(!showCustomization)}
+        >
+          {showCustomization ? 'Hide' : 'Show'} Customizer
+        </button>
       </div>
 
-      <div className="canvas-wrapper" ref={containerRef}>
-        {showLoading && (
-          <div className="loading-overlay">
-            <div className="spinner"></div>
-            <p>
-              {!isSceneReady
-                ? 'Initializing 3D viewer...'
-                : carsLoading
-                  ? 'Loading cars...'
-                  : 'Loading 3D model...'}
-            </p>
-          </div>
-        )}
+      <div className="viewer-content">
+        <div className={`canvas-wrapper ${showCustomization ? 'with-panel' : ''}`} ref={containerRef}>
+          {showLoading && (
+            <div className="loading-overlay">
+              <div className="spinner"></div>
+              <p>
+                {!isSceneReady
+                  ? 'Initializing 3D viewer...'
+                  : carsLoading
+                    ? 'Loading cars...'
+                    : 'Loading 3D model...'}
+              </p>
+            </div>
+          )}
 
-        {showError && (
-          <div className="error-overlay">
-            <div className="error-message">
-              <h3>Error</h3>
-              <p>{sceneError || carsError || modelError}</p>
-              <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
-                {carsError && <button onClick={refetchCars}>Retry cars</button>}
-                {modelError && <button onClick={reloadModel}>Retry model</button>}
+          {showError && (
+            <div className="error-overlay">
+              <div className="error-message">
+                <h3>Error</h3>
+                <p>{sceneError || carsError || modelError}</p>
+                <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
+                  {carsError && <button onClick={refetchCars}>Retry cars</button>}
+                  {modelError && <button onClick={reloadModel}>Retry model</button>}
+                </div>
               </div>
             </div>
+          )}
+        </div>
+
+        {showCustomization && (
+          <div className="customization-container" ref={customizationRef}>
+            <CustomizationPanel
+              carBasePrice={car?.basePrice || 0}
+              onSave={handleSaveConfiguration}
+              onLoad={handleLoadConfiguration}
+            />
           </div>
         )}
       </div>

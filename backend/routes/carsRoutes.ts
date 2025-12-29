@@ -7,9 +7,9 @@ import {
   getCars,
   updateCar,
 } from '../controllers/CarsController';
-import { getCustomizationsForCar } from '../controllers/CustomizationController';
 import { requireAdmin } from '../middleware/auth';
 import { validateRequest } from '../middleware/validateRequest';
+import customizationRouter from './customizationRoutes';
 
 const router = Router();
 
@@ -22,11 +22,13 @@ router.get(
   getCarById
 );
 
-router.get(
+router.use(
   '/:carId/customizations',
-  [param('carId').isUUID().withMessage('carId must be a valid UUID')],
+  [
+    param('carId').isUUID().withMessage('carId must be a valid UUID'),
+  ],
   validateRequest,
-  getCustomizationsForCar
+  customizationRouter
 );
 
 router.post(

@@ -70,14 +70,46 @@
   cursor: not-allowed;
 }
 
+.customization-toggle {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.customization-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.customization-toggle.active {
+  background: rgba(100, 108, 255, 0.2);
+  border-color: #646cff;
+}
+
+.viewer-content {
+  display: flex;
+  gap: 1rem;
+  min-height: 500px;
+}
+
 .canvas-wrapper {
   position: relative;
-  width: 100%;
+  flex: 1;
   height: 600px;
   border-radius: 8px;
   overflow: hidden;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.canvas-wrapper.with-panel {
+  flex: 1;
+  min-width: 0;
 }
 
 .canvas-wrapper canvas {
@@ -90,6 +122,16 @@
 
 .canvas-wrapper canvas:active {
   cursor: grabbing;
+}
+
+.customization-container {
+  width: 380px;
+  flex-shrink: 0;
+  max-height: 700px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .loading-overlay,
@@ -217,6 +259,21 @@
   opacity: 0.7;
 }
 
+@media (max-width: 1024px) {
+  .viewer-content {
+    flex-direction: column;
+  }
+
+  .canvas-wrapper {
+    height: 400px;
+  }
+
+  .customization-container {
+    width: 100%;
+    max-height: 400px;
+  }
+}
+
 @media (max-width: 768px) {
   .car-viewer-header {
     flex-direction: column;
@@ -227,8 +284,12 @@
     width: 100%;
   }
 
+  .customization-toggle {
+    width: 100%;
+  }
+
   .canvas-wrapper {
-    height: 400px;
+    height: 350px;
   }
 
   .controls-panel {
