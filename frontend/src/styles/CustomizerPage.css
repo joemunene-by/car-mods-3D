@@ -1,0 +1,45 @@
+.customizer-page {
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.customizer-layout {
+  display: flex;
+  height: 100%;
+  gap: 0;
+}
+
+.viewer-section {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.panel-section {
+  width: 420px;
+  min-width: 420px;
+  background: #f8f9fa;
+  border-left: 1px solid #e9ecef;
+  overflow-y: auto;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .customizer-layout {
+    flex-direction: column;
+  }
+  
+  .panel-section {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel-section {
+    width: 100%;
+    min-width: auto;
+  }
+}
