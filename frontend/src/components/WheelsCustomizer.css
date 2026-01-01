@@ -1,0 +1,233 @@
+.wheels-customizer {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wheels-customizer label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.wheel-design-selector {
+  margin-bottom: 1.5rem;
+}
+
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.design-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.design-option:hover {
+  border-color: #4a90e2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.design-option.selected {
+  border-color: #4a90e2;
+  background: #f0f8ff;
+}
+
+.design-image {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.wheel-preview-placeholder {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.design-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.design-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.design-price {
+  font-size: 0.85rem;
+  color: #4a90e2;
+  font-weight: 500;
+}
+
+.size-selector {
+  margin-bottom: 1.5rem;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.size-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  text-align: center;
+}
+
+.size-btn:hover {
+  border-color: #4a90e2;
+  background: #f0f8ff;
+}
+
+.size-btn.active {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: white;
+}
+
+.size-price {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  color: #666;
+}
+
+.size-btn.active .size-price {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.finish-selector,
+.tire-selector {
+  margin-bottom: 1.5rem;
+}
+
+.finish-select,
+.tire-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.finish-select:focus,
+.tire-select:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.wheel-specs {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.wheel-specs h4 {
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spec-label {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.spec-value {
+  font-weight: 600;
+  color: #333;
+}
+
+.apply-wheels-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.apply-wheels-btn:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+}
+
+.current-selection {
+  padding: 1rem;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+}
+
+.current-selection h4 {
+  margin-bottom: 0.5rem;
+  color: #155724;
+}
+
+.selection-summary {
+  margin: 0;
+  color: #155724;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .design-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+}

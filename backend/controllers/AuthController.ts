@@ -73,10 +73,9 @@ export const login = async (
     const expiresIn = process.env.JWT_EXPIRES_IN || '7d';
 
     const token = jwt.sign(
-      { email: user.email },
+      { email: user.email, sub: user.id },
       secret,
       {
-        subject: user.id,
         expiresIn,
       }
     );
